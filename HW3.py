@@ -66,13 +66,12 @@ class CouponDispenser:
             str: message as described above
         """
         # TODO: Implement per instructions
-        def issue_coupon(self, name):
-            if not self.coupon_cards: #find the index of the name to get matching coupon index
-                return "The box is empty." 
-            if name in self.customer_roster:
-                idx = self.customer_roster.index(name)
-                assigned_coupon = self.coupon_cards[self.issued_indices[idx]]
-                return f"That name already has a coupon: {assigned_coupon}"
+        if not self.coupon_cards: #find the index of the name to get matching coupon index
+            return "The box is empty." 
+        if name in self.customer_roster:
+            idx = self.customer_roster.index(name)
+            assigned_coupon = self.coupon_cards[self.issued_indices[idx]]
+            return f"That name already has a coupon: {assigned_coupon}"
             
         random_idx = random.randrange(len(self.coupon_cards)) #if name is new, pick a random index
         self.customer_roster.append(name)
@@ -97,27 +96,26 @@ class CouponDispenser:
         Reminder: Use lists only (no dictionaries).
         """
         # TODO: Implement per instructions 
-        def distribute_session(self):
-            round_number = 1
-            while True:
-                prompt = f"Round {round_number} Enter a name, (or a comma=separated list), or type 'show' or exit': "
-                user_input = input(prompt)
-                if user_input == "exit":
-                    print("Goodbye!")
-                    break
-                elif user_input == "show":
-                    for i in range(len(self.customer_roster)):
-                        name = self.customer_roster[i]
-                        coupon = self.coupon_cards[self.issued_indices[i]]
-                        print(f"{name}: {coupon}")
-                else:
-                    pieces = user_input.split(",")
-                    for piece in pieces:
-                        stripped_name = piece.strip()
-                        if stripped_name:
-                            result = self.issue_coupon(stripped_name)
-                            print(result)
-                round_number += 1
+        round_number = 1
+        while True:
+            prompt = f"Round {round_number} Enter a name, (or a comma=separated list), or type 'show' or exit': "
+            user_input = input(prompt)
+            if user_input == "exit":
+                print("Goodbye!")
+                break
+            elif user_input == "show":
+                for i in range(len(self.customer_roster)):
+                    name = self.customer_roster[i]
+                    coupon = self.coupon_cards[self.issued_indices[i]]
+                    print(f"{name}: {coupon}")
+            else:
+                pieces = user_input.split(",")
+                for piece in pieces:
+                    stripped_name = piece.strip()
+                    if stripped_name:
+                        result = self.issue_coupon(stripped_name)
+                        print(result)
+            round_number += 1
                 
 
 
