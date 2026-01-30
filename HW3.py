@@ -1,6 +1,6 @@
-# Name:
-# Student ID:
-# Email:
+# Name: Wesley Chan
+# Student ID: 78133291
+# Email: wesleycc@umich.edu
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
@@ -11,7 +11,6 @@
 import random
 import io
 from contextlib import redirect_stdout
-
 
 class CouponDispenser:
     """
@@ -28,11 +27,14 @@ class CouponDispenser:
     def __init__(self, coupon_cards):
         """
         Initialize a new CouponDispenser object.
-
         Args:
             coupon_cards (list[str]): list of possible coupons users can receive.
         """
         # TODO: Implement per instructions
+        self.coupon_cards = coupon_cards
+        self.customer_roster = [] #store customer names in order
+        self.issued_indices = [] #stores index of coupon
+    
         pass
 
     def __str__(self):
@@ -44,6 +46,9 @@ class CouponDispenser:
             str
         """
         # TODO: Implement per instructions
+        if not self.coupon_cards: #return empty string if empty
+            return ""
+        return "|".join(self.coupon_cards) #joins coupons
         pass
 
     def issue_coupon(self, name):
@@ -61,6 +66,14 @@ class CouponDispenser:
             str: message as described above
         """
         # TODO: Implement per instructions
+        def issue_coupon(self, name):
+            if not self.coupon_cards:
+                return "The box is empty." 
+            if name in self.customer_roster:
+                idx = self.customer_roster.index(name)
+                assigned_coupon = self.coupon_cards[self.issued_indices[idx]]
+                return f"That name already has a coupon: {assigned_coupon}"
+
         pass
 
     def distribute_session(self):
