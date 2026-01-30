@@ -106,8 +106,9 @@ class CouponDispenser:
             elif user_input == "show":
                 for i in range(len(self.customer_roster)):
                     name = self.customer_roster[i]
-                    coupon = self.coupon_cards[self.issued_indices[i]]
-                    print(f"{name}: {coupon}")
+                    coupon_index = self.issued_indices[i]
+                    coupon_text = self.coupon_cards[coupon_index]
+                    print(f"{name}: {coupon_text}")
             else:
                 pieces = user_input.split(",")
                 for piece in pieces:
