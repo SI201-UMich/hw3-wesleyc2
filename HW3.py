@@ -98,7 +98,7 @@ class CouponDispenser:
         # TODO: Implement per instructions 
         round_number = 1
         while True:
-            prompt = f"Round {round_number} Enter a name, (or a comma=separated list), or type 'show' or exit': "
+            prompt = f"Round {round_number} Enter a name (or a comma-separated list), or type 'show' or 'exit': "
             user_input = input(prompt)
             if user_input == "exit":
                 print("Goodbye!")
@@ -449,5 +449,5 @@ def test():
 
 if __name__ == "__main__":
     main()
-    # test()
+    test()
 
