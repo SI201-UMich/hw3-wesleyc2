@@ -67,12 +67,17 @@ class CouponDispenser:
         """
         # TODO: Implement per instructions
         def issue_coupon(self, name):
-            if not self.coupon_cards:
+            if not self.coupon_cards: #find the index of the name to get matching coupon index
                 return "The box is empty." 
             if name in self.customer_roster:
                 idx = self.customer_roster.index(name)
                 assigned_coupon = self.coupon_cards[self.issued_indices[idx]]
                 return f"That name already has a coupon: {assigned_coupon}"
+            
+        random_idx = random.randrange(len(self.coupon_cards)) #if name is new, pick a random index
+        self.customer_roster.append(name)
+        self.issued_indices.append(random_idx)
+        return self.coupon_cards[random_idx]
 
         pass
 
